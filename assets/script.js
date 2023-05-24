@@ -55,6 +55,17 @@ const saveButton = () => {
   });
 };
 
+const checkCurrentDay = (today) => {
+  const savedDay = JSON.parse(localStorage.getItem("today"));
+  if (savedDay === today) {
+    // if the current day is the same as the saved day, then load the saved data
+    loadSavedData();
+  } else {
+    // if the current day is not the same as the saved day, then clear the local storage
+    localStorage.clear();
+  }
+};
+
 const saveCurrentDay = (today) => {
   localStorage.setItem("today", JSON.stringify(today));
   checkCurrentDay(today);
