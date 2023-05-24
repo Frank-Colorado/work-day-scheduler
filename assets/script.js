@@ -167,6 +167,7 @@ const timeBlockDisplay = () => {
   currentHour();
 };
 
+// When the window loads, the timeBlockDisplay and currentDayDisplay functions are called
 window.onload = function () {
   timeBlockDisplay();
   currentDayDisplay();
