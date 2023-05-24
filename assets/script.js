@@ -47,6 +47,22 @@ const currentDayDisplay = () => {
   $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
 };
 
+const currentHour = () => {
+  let currentHour = dayjs().hour();
+  const timeblocks = document.querySelectorAll(".time-block");
+  console.log(currentHour);
+  console.log(timeblocks);
+  timeblocks.forEach((timeblock) => {
+    if (timeblock.id < currentHour) {
+      timeblock.classList.add("past");
+    } else if (timeblock.id == currentHour) {
+      timeblock.classList.add("present");
+    } else {
+      timeblock.classList.add("future");
+    }
+  });
+};
+
 const timeBlockDisplay = () => {
   // displays the time blocks
   timeBlocks.forEach((timeBlock) => {
@@ -62,6 +78,7 @@ const timeBlockDisplay = () => {
     `;
     $("#timeBlockContainer").append(timeblockDiv);
   });
+  currentHour();
 };
 
 $(function () {
