@@ -6,11 +6,11 @@ This is a Scheduler App which was created to complete my bootcamp's 5th challeng
 
 ## Visuals
 
-https://frank-colorado.github.io/work-day-scheduler/
+![image](https://github.com/Frank-Colorado/work-day-scheduler/assets/123683792/64efb813-d29f-4e0c-8d5c-f0e8f9c99a12)
 
 ## Website URL
 
-https://github.com/Frank-Colorado/work-day-scheduler.git
+https://frank-colorado.github.io/work-day-scheduler/
 
 ## Installation
 
