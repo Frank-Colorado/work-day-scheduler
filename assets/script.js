@@ -56,9 +56,10 @@ const saveButton = () => {
 };
 
 const currentDayDisplay = () => {
-  let today = dayjs();
+  const day = dayjs();
   // displays the date and day of the week in the header
-  $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
+  const today = day.format("dddd, MMMM D, YYYY");
+  $("#currentDay").text(today);
 };
 
 const currentHour = () => {
@@ -117,4 +118,7 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-timeBlockDisplay();
+window.onload = function () {
+  currentDayDisplay();
+  timeBlockDisplay();
+};
