@@ -41,6 +41,21 @@ const timeBlocks = [
   },
 ];
 
+// This is a function that will load the saved data from local storage
+const loadSavedData = () => {
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  if (todos.length > 0) {
+    todos.forEach((todo) => {
+      const timeBlock = document.getElementById(todo.id);
+      const timeBlockText = timeBlock.querySelector("textarea");
+      timeBlockText.value = todo.text;
+    });
+  } else {
+    return;
+  }
+  return;
+};
+
 saveTodos = (todoText, todoId) => {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
   const todo = {
