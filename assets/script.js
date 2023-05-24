@@ -55,11 +55,17 @@ const saveButton = () => {
   });
 };
 
+const saveCurrentDay = (today) => {
+  localStorage.setItem("today", JSON.stringify(today));
+  checkCurrentDay(today);
+};
+
 const currentDayDisplay = () => {
   const day = dayjs();
   // displays the date and day of the week in the header
   const today = day.format("dddd, MMMM D, YYYY");
   $("#currentDay").text(today);
+  saveCurrentDay(today);
 };
 
 const currentHour = () => {
