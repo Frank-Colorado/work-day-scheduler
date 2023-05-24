@@ -41,6 +41,20 @@ const timeBlocks = [
   },
 ];
 
+// This is a function that will select all timeblock buttons and add an event listener to them
+// When the button is clicked, it will save the text in the textarea to local storage
+const saveButton = () => {
+  const saveBtns = document.querySelectorAll(".saveBtn");
+  saveBtns.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const textArea = button.previousElementSibling;
+      const textAreaValue = textArea.value;
+      const timeBlockId = textArea.parentElement.id;
+    });
+  });
+};
+
 const currentDayDisplay = () => {
   let today = dayjs();
   // displays the date and day of the week in the header
@@ -61,6 +75,7 @@ const currentHour = () => {
       timeblock.classList.add("future");
     }
   });
+  saveButton();
 };
 
 const timeBlockDisplay = () => {
