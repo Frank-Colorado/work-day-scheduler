@@ -41,6 +41,16 @@ const timeBlocks = [
   },
 ];
 
+saveTodos = (todoText, todoId) => {
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  const todo = {
+    text: todoText,
+    id: todoId,
+  };
+  todos.push(todo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
 // This is a function that will select all timeblock buttons and add an event listener to them
 // When the button is clicked, it will save the text in the textarea to local storage
 const saveButton = () => {
@@ -51,6 +61,7 @@ const saveButton = () => {
       const textArea = button.previousElementSibling;
       const textAreaValue = textArea.value;
       const timeBlockId = textArea.parentElement.id;
+      saveTodos(textAreaValue, timeBlockId);
     });
   });
 };
@@ -64,11 +75,11 @@ const checkCurrentDay = (today) => {
     // if the current day is not the same as the saved day, then clear the local storage
     localStorage.clear();
   }
+  saveCurrentDay(today);
 };
 
 const saveCurrentDay = (today) => {
   localStorage.setItem("today", JSON.stringify(today));
-  checkCurrentDay(today);
 };
 
 const currentDayDisplay = () => {
@@ -76,14 +87,12 @@ const currentDayDisplay = () => {
   // displays the date and day of the week in the header
   const today = day.format("dddd, MMMM D, YYYY");
   $("#currentDay").text(today);
-  saveCurrentDay(today);
+  checkCurrentDay(today);
 };
 
 const currentHour = () => {
   let currentHour = dayjs().hour();
   const timeblocks = document.querySelectorAll(".time-block");
-  console.log(currentHour);
-  console.log(timeblocks);
   timeblocks.forEach((timeblock) => {
     if (timeblock.id < currentHour) {
       timeblock.classList.add("past");
@@ -136,6 +145,6 @@ $(function () {
 });
 
 window.onload = function () {
-  currentDayDisplay();
   timeBlockDisplay();
+  currentDayDisplay();
 };
